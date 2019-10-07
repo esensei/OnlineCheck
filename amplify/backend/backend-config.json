@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"onlinecheck5edb0098": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}
