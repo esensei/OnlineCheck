@@ -718,8 +718,8 @@ export default class EscPosPrinter {
        const ctx = this.getContext()
        ctx.clearRect(0, 0, this.docCanvas.width, this.docCanvas.height)
          //TODO
-       // this.docCanvas.style.width = `${width}px`
-       // this.docCanvas.style.height = `${height}px`
+        this.docCanvas.style.width = `${width}px`
+        this.docCanvas.style.height = `${height}px`
        this.docCanvas.width = width
        this.docCanvas.height = height
 

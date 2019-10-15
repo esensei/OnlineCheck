@@ -15,5 +15,22 @@
                 "onlinecheck5edb0098": {}
             }
         }
+    },
+    "onlinech": {
+        "awscloudformation": {
+            "AuthRoleName": "onlinecheck-onlinech-20191009012135-authRole",
+            "UnauthRoleArn": "arn:aws:iam::703121141379:role/onlinecheck-onlinech-20191009012135-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::703121141379:role/onlinecheck-onlinech-20191009012135-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "onlinecheck-onlinech-20191009012135-deployment",
+            "UnauthRoleName": "onlinecheck-onlinech-20191009012135-unauthRole",
+            "StackName": "onlinecheck-onlinech-20191009012135",
+            "StackId": "arn:aws:cloudformation:eu-central-1:703121141379:stack/onlinecheck-onlinech-20191009012135/3a230690-ea09-11e9-9af9-0a4de0a8f3d8"
+        },
+        "categories": {
+            "auth": {
+                "onlinecheck5edb0098": {}
+            }
+        }
     }
 }

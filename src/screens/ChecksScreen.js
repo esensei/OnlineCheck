@@ -34,16 +34,16 @@ class ChecksScreen extends Component {
     const { canvas } = styles
     return (
       <Container style={{ backgroundColor: 'rgb(239,243,248)' }}>
-        <Header>
+        <Header style={{  height: 64, backgroundColor: 'rgb(21,59,63)' }}>
           <Left />
           <Body>
-            <Title>Ваши чеки</Title>
+            <Title style={{color: 'white'}}>Ваши чеки</Title>
           </Body>
           <Right />
         </Header>
         <Content style={{ paddingHorizontal: 5 }}>
           <Card>
-            <CardItem style={{ backgroundColor: 'rgb(106,175,237)' }}>
+            <CardItem style={{ backgroundColor: 'rgb(76,171,157)' }}>
               <Left>
                 <Thumbnail source={require('../img/logoOnCheck.png')} />
                 <Body>

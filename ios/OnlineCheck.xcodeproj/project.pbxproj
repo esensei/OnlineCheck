@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0034D248234E49A100CBB55B /* libPermission-Camera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D247234E49A100CBB55B /* libPermission-Camera.a */; };
+		0034D24A234E49DA00CBB55B /* libPermission-BluetoothPeripheral.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D249234E49DA00CBB55B /* libPermission-BluetoothPeripheral.a */; };
+		0034D24C234E49DA00CBB55B /* libPermission-Calendars.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D24B234E49DA00CBB55B /* libPermission-Calendars.a */; };
+		0034D24E234E49DA00CBB55B /* libPermission-Camera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D24D234E49DA00CBB55B /* libPermission-Camera.a */; };
+		0034D250234E49DA00CBB55B /* libPermission-Contacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D24F234E49DA00CBB55B /* libPermission-Contacts.a */; };
+		0034D252234E49DA00CBB55B /* libPermission-FaceID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D251234E49DA00CBB55B /* libPermission-FaceID.a */; };
+		0034D254234E49DA00CBB55B /* libPermission-LocationAlways.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D253234E49DA00CBB55B /* libPermission-LocationAlways.a */; };
+		0034D256234E49DA00CBB55B /* libPermission-LocationWhenInUse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D255234E49DA00CBB55B /* libPermission-LocationWhenInUse.a */; };
+		0034D258234E49DA00CBB55B /* libPermission-MediaLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D257234E49DA00CBB55B /* libPermission-MediaLibrary.a */; };
+		0034D25A234E49DA00CBB55B /* libPermission-Microphone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D259234E49DA00CBB55B /* libPermission-Microphone.a */; };
+		0034D25C234E49DA00CBB55B /* libPermission-Motion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D25B234E49DA00CBB55B /* libPermission-Motion.a */; };
+		0034D25E234E49DA00CBB55B /* libPermission-Notifications.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D25D234E49DA00CBB55B /* libPermission-Notifications.a */; };
+		0034D260234E49DA00CBB55B /* libPermission-PhotoLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D25F234E49DA00CBB55B /* libPermission-PhotoLibrary.a */; };
+		0034D262234E49DA00CBB55B /* libPermission-Reminders.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D261234E49DA00CBB55B /* libPermission-Reminders.a */; };
+		0034D264234E49DA00CBB55B /* libPermission-Siri.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D263234E49DA00CBB55B /* libPermission-Siri.a */; };
+		0034D266234E49DA00CBB55B /* libPermission-SpeechRecognition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D265234E49DA00CBB55B /* libPermission-SpeechRecognition.a */; };
+		0034D268234E49DA00CBB55B /* libPermission-StoreKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D267234E49DA00CBB55B /* libPermission-StoreKit.a */; };
+		0034D26A234E49DA00CBB55B /* libRNPermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0034D269234E49DA00CBB55B /* libRNPermissions.a */; };
+		00A7727623520D3100EDCD87 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A7727523520D3100EDCD87 /* File.swift */; };
+		00A772812352200500EDCD87 /* libreact-native-ble-plx-swift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A772802352200500EDCD87 /* libreact-native-ble-plx-swift.a */; };
+		00A772862354E49A00EDCD87 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A772852354E49A00EDCD87 /* ExternalAccessory.framework */; };
+		00A772882354E4B500EDCD87 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A772872354E4B500EDCD87 /* HomeKit.framework */; };
+		00A7728B2356154000EDCD87 /* лого echek.png in Resources */ = {isa = PBXBuildFile; fileRef = 00A7728A2356154000EDCD87 /* лого echek.png */; };
+		00A7728D2356173C00EDCD87 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00A7728C2356173C00EDCD87 /* Launch Screen.storyboard */; };
 		00E356F31AD99517003FC87E /* OnlineCheckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* OnlineCheckTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
@@ -40,7 +64,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0034D232234E41F100CBB55B /* libPermission-Camera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Camera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D234234E423700CBB55B /* libRNPermissions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNPermissions.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D245234E496000CBB55B /* libRNPermissions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNPermissions.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D247234E49A100CBB55B /* libPermission-Camera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Camera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D249234E49DA00CBB55B /* libPermission-BluetoothPeripheral.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-BluetoothPeripheral.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D24B234E49DA00CBB55B /* libPermission-Calendars.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Calendars.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D24D234E49DA00CBB55B /* libPermission-Camera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Camera.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D24F234E49DA00CBB55B /* libPermission-Contacts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Contacts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D251234E49DA00CBB55B /* libPermission-FaceID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-FaceID.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D253234E49DA00CBB55B /* libPermission-LocationAlways.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-LocationAlways.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D255234E49DA00CBB55B /* libPermission-LocationWhenInUse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-LocationWhenInUse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D257234E49DA00CBB55B /* libPermission-MediaLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-MediaLibrary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D259234E49DA00CBB55B /* libPermission-Microphone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Microphone.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D25B234E49DA00CBB55B /* libPermission-Motion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Motion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D25D234E49DA00CBB55B /* libPermission-Notifications.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Notifications.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D25F234E49DA00CBB55B /* libPermission-PhotoLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-PhotoLibrary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D261234E49DA00CBB55B /* libPermission-Reminders.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Reminders.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D263234E49DA00CBB55B /* libPermission-Siri.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-Siri.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D265234E49DA00CBB55B /* libPermission-SpeechRecognition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-SpeechRecognition.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D267234E49DA00CBB55B /* libPermission-StoreKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPermission-StoreKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0034D269234E49DA00CBB55B /* libRNPermissions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRNPermissions.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		00A7727423520D3100EDCD87 /* OnlineCheck-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OnlineCheck-Bridging-Header.h"; sourceTree = "<group>"; };
+		00A7727523520D3100EDCD87 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		00A772802352200500EDCD87 /* libreact-native-ble-plx-swift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-ble-plx-swift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00A772822352204A00EDCD87 /* libreact-native-ble-plx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libreact-native-ble-plx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00A772852354E49A00EDCD87 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		00A772872354E4B500EDCD87 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
+		00A7728A2356154000EDCD87 /* лого echek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "лого echek.png"; path = "../../../Downloads/лого echek.png"; sourceTree = "<group>"; };
+		00A7728C2356173C00EDCD87 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* OnlineCheckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlineCheckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* OnlineCheckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlineCheckTests.m; sourceTree = "<group>"; };
@@ -82,6 +135,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A772812352200500EDCD87 /* libreact-native-ble-plx-swift.a in Frameworks */,
+				0034D24A234E49DA00CBB55B /* libPermission-BluetoothPeripheral.a in Frameworks */,
+				0034D24C234E49DA00CBB55B /* libPermission-Calendars.a in Frameworks */,
+				0034D24E234E49DA00CBB55B /* libPermission-Camera.a in Frameworks */,
+				0034D250234E49DA00CBB55B /* libPermission-Contacts.a in Frameworks */,
+				0034D252234E49DA00CBB55B /* libPermission-FaceID.a in Frameworks */,
+				0034D254234E49DA00CBB55B /* libPermission-LocationAlways.a in Frameworks */,
+				0034D256234E49DA00CBB55B /* libPermission-LocationWhenInUse.a in Frameworks */,
+				00A772882354E4B500EDCD87 /* HomeKit.framework in Frameworks */,
+				0034D258234E49DA00CBB55B /* libPermission-MediaLibrary.a in Frameworks */,
+				0034D25A234E49DA00CBB55B /* libPermission-Microphone.a in Frameworks */,
+				0034D25C234E49DA00CBB55B /* libPermission-Motion.a in Frameworks */,
+				0034D25E234E49DA00CBB55B /* libPermission-Notifications.a in Frameworks */,
+				0034D260234E49DA00CBB55B /* libPermission-PhotoLibrary.a in Frameworks */,
+				0034D262234E49DA00CBB55B /* libPermission-Reminders.a in Frameworks */,
+				0034D264234E49DA00CBB55B /* libPermission-Siri.a in Frameworks */,
+				0034D266234E49DA00CBB55B /* libPermission-SpeechRecognition.a in Frameworks */,
+				0034D268234E49DA00CBB55B /* libPermission-StoreKit.a in Frameworks */,
+				0034D26A234E49DA00CBB55B /* libRNPermissions.a in Frameworks */,
+				00A772862354E49A00EDCD87 /* ExternalAccessory.framework in Frameworks */,
+				0034D248234E49A100CBB55B /* libPermission-Camera.a in Frameworks */,
 				ABF2B7EA61C29F2E1C5BAEFC /* libPods-OnlineCheck.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,10 +202,12 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				00A7728A2356154000EDCD87 /* лого echek.png */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				00A7728C2356173C00EDCD87 /* Launch Screen.storyboard */,
 			);
 			name = OnlineCheck;
 			sourceTree = "<group>";
@@ -154,6 +230,31 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00A772872354E4B500EDCD87 /* HomeKit.framework */,
+				00A772852354E49A00EDCD87 /* ExternalAccessory.framework */,
+				00A772822352204A00EDCD87 /* libreact-native-ble-plx.a */,
+				00A772802352200500EDCD87 /* libreact-native-ble-plx-swift.a */,
+				0034D249234E49DA00CBB55B /* libPermission-BluetoothPeripheral.a */,
+				0034D24B234E49DA00CBB55B /* libPermission-Calendars.a */,
+				0034D24D234E49DA00CBB55B /* libPermission-Camera.a */,
+				0034D24F234E49DA00CBB55B /* libPermission-Contacts.a */,
+				0034D251234E49DA00CBB55B /* libPermission-FaceID.a */,
+				0034D253234E49DA00CBB55B /* libPermission-LocationAlways.a */,
+				0034D255234E49DA00CBB55B /* libPermission-LocationWhenInUse.a */,
+				0034D257234E49DA00CBB55B /* libPermission-MediaLibrary.a */,
+				0034D259234E49DA00CBB55B /* libPermission-Microphone.a */,
+				0034D25B234E49DA00CBB55B /* libPermission-Motion.a */,
+				0034D25D234E49DA00CBB55B /* libPermission-Notifications.a */,
+				0034D25F234E49DA00CBB55B /* libPermission-PhotoLibrary.a */,
+				0034D261234E49DA00CBB55B /* libPermission-Reminders.a */,
+				0034D263234E49DA00CBB55B /* libPermission-Siri.a */,
+				0034D265234E49DA00CBB55B /* libPermission-SpeechRecognition.a */,
+				0034D267234E49DA00CBB55B /* libPermission-StoreKit.a */,
+				0034D269234E49DA00CBB55B /* libRNPermissions.a */,
+				0034D247234E49A100CBB55B /* libPermission-Camera.a */,
+				0034D245234E496000CBB55B /* libRNPermissions.a */,
+				0034D234234E423700CBB55B /* libRNPermissions.a */,
+				0034D232234E41F100CBB55B /* libPermission-Camera.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				D0CBEB07EA2191C67DB675DD /* libPods-OnlineCheck.a */,
@@ -174,12 +275,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				00A7727523520D3100EDCD87 /* File.swift */,
 				13B07FAE1A68108700A75B9A /* OnlineCheck */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* OnlineCheckTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				229E3DEB5396246369FCF1E5 /* Pods */,
+				00A7727423520D3100EDCD87 /* OnlineCheck-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -290,11 +393,12 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = 557P5K689Q;
+						DevelopmentTeam = HT2BYM7686;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 557P5K689Q;
+						DevelopmentTeam = HT2BYM7686;
+						LastSwiftMigration = 1100;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -342,6 +446,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				00A7728B2356154000EDCD87 /* лого echek.png in Resources */,
+				00A7728D2356173C00EDCD87 /* Launch Screen.storyboard in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +688,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				00A7727623520D3100EDCD87 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,8 +742,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 13324990B1F367E51B0FAC9C /* Pods-OnlineCheckTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 557P5K689Q;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = HT2BYM7686;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -659,9 +768,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 029DB2E19C7F0ACE5D604983 /* Pods-OnlineCheckTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 557P5K689Q;
+				DEVELOPMENT_TEAM = HT2BYM7686;
 				INFOPLIST_FILE = OnlineCheckTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -681,9 +792,11 @@
 			baseConfigurationReference = 2C4E3BCB3A4CCA3DB63F3417 /* Pods-OnlineCheck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = OnlineCheck/OnlineCheck.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 557P5K689Q;
+				DEVELOPMENT_TEAM = HT2BYM7686;
 				INFOPLIST_FILE = OnlineCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -691,8 +804,11 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.OnlineCheck-1";
 				PRODUCT_NAME = OnlineCheck;
+				SWIFT_OBJC_BRIDGING_HEADER = "OnlineCheck-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -702,8 +818,10 @@
 			baseConfigurationReference = CC72EB5A5CF7FA2E461B2CED /* Pods-OnlineCheck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = OnlineCheck/OnlineCheck.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 557P5K689Q;
+				DEVELOPMENT_TEAM = HT2BYM7686;
 				INFOPLIST_FILE = OnlineCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -711,8 +829,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.OnlineCheck-1";
 				PRODUCT_NAME = OnlineCheck;
+				SWIFT_OBJC_BRIDGING_HEADER = "OnlineCheck-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -936,7 +1056,7 @@
 				00E356F71AD99517003FC87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "OnlineCheck" */ = {
 			isa = XCConfigurationList;
@@ -945,7 +1065,7 @@
 				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "OnlineCheck-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -954,7 +1074,7 @@
 				2D02E4981E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "OnlineCheck-tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -963,7 +1083,7 @@
 				2D02E49A1E0B4A5E006451C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "OnlineCheck" */ = {
 			isa = XCConfigurationList;
@@ -972,7 +1092,7 @@
 				83CBBA211A601CBA00E9B192 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
