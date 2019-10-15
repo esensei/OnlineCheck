@@ -1,13 +1,9 @@
 const checkReducer = (state = null, action) => {
   if (action.type === 'CHECK_FETCH') {
-    return {
-      lunchboxes: action.payload
-    }
+    return action.payload
   }
   if (action.type === 'CHECK_REMOVE') {
-    return {
-      lunchboxes: action.payload
-    }
+    return null
   }
   return state
 }

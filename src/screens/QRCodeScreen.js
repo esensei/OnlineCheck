@@ -11,9 +11,11 @@ import {
   Text,
   Title
 } from 'native-base'
-import NfcManager, {NfcEvents} from 'react-native-nfc-manager'
+import NfcManager, { NfcEvents } from 'react-native-nfc-manager'
+import { connect } from 'react-redux'
+import {fetchCheck} from '../actions'
 
-export default class QRCodeScreen extends Component {
+class QRCodeScreen extends Component {
   constructor() {
     super()
     this.manager = new BleManager()
@@ -74,7 +76,7 @@ export default class QRCodeScreen extends Component {
                 console.log(error)
               })
           })
-        setTimeout(() => { this.manager.cancelDeviceConnection(device.id).then() }, 5000);
+        setTimeout(() => { this.manager.cancelDeviceConnection(device.id).then() }, 5000)
       }
     })
   }
@@ -86,48 +88,56 @@ export default class QRCodeScreen extends Component {
       }
     }, true)
 
-    NfcManager.start();
+    NfcManager.start()
     NfcManager.setEventListener(NfcEvents.DiscoverTag, tag => {
-      console.warn('tag', tag);
-      NfcManager.setAlertMessageIOS('I got your tag!');
-      NfcManager.unregisterTagEvent().catch(() => 0);
+      console.warn('tag', tag)
+      NfcManager.setAlertMessageIOS('I got your tag!')
+      NfcManager.unregisterTagEvent().catch(() => 0)
     })
   }
+
   componentWillUnmount() {
-    NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
-    NfcManager.unregisterTagEvent().catch(() => 0);
+    NfcManager.setEventListener(NfcEvents.DiscoverTag, null)
+    NfcManager.unregisterTagEvent().catch(() => 0)
   }
 
   _test = () => {
+    this.props.fetchCheck('kek')
     NfcManager.registerTagEvent()
       .then()
       .catch(err => {
-        NfcManager.unregisterTagEvent().catch(() => 0);
-        console.warn(err)})
-
+        NfcManager.unregisterTagEvent().catch(() => 0)
+        console.warn(err)
+      })
   }
+
   render() {
     return (
       <Container style={{ backgroundColor: 'rgb(239,243,248)' }}>
-        <Header style={{  height: 64, backgroundColor: 'rgb(21,59,63)' }}>
+        <Header style={{ height: 64, backgroundColor: 'rgb(21,59,63)' }}>
           <Body>
-            <Title style={{color: 'white'}}>Сканируйте QR-код или NFC</Title>
+            <Title style={{ color: 'white' }}>Сканируйте QR-код или NFC</Title>
           </Body>
         </Header>
-        <Content >
-        <QRCodeScanner
-          onRead={(e) => this.scanAndConnect(e.data)}
-          showMarker
-        />
-        <Content style={{paddingHorizontal: 15, paddingTop: 20}}>
-        <Button  onPress={this._test} block style={{backgroundColor: 'rgb(21,59,63)' }}>
-          <Text>
+        <Content>
+          <QRCodeScanner
+            onRead={(e) => this.scanAndConnect(e.data)}
+            showMarker
+          />
+          <Content style={{ paddingHorizontal: 15, paddingTop: 20 }}>
+            <Button onPress={this._test} block style={{ backgroundColor: 'rgb(21,59,63)' }}>
+              <Text>
             NFC
-          </Text>
-        </Button>
-        </Content>
+              </Text>
+            </Button>
+          </Content>
         </Content>
       </Container>
-      )
+    )
   }
 }
+const mapDispatchToProps = dispatch => ({
+  fetchCheck: (payload) => dispatch(fetchCheck(payload))
+})
+
+export default connect(null, mapDispatchToProps)(QRCodeScreen)
