@@ -25,8 +25,6 @@ import { CardItem } from "native-base"
 
 const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
 
-
-
 Amplify.configure({
   ...awsconfig,
   Analytics: {
@@ -90,7 +88,7 @@ const BottomNavigator = createMaterialBottomTabNavigator(
 )
 
 const BottomContainer = createAppContainer(BottomNavigator)
-
+console.disableYellowBox = true
 class Index extends Component {
 
 

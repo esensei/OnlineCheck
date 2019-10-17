@@ -38,7 +38,7 @@ const AmplifyTheme = StyleSheet.create({
   },
   sectionFooterLink: {
     fontSize: 14,
-    color: '#30d0fe',
+    color: 'rgb(21,59,63)',
     alignItems: 'baseline',
     textAlign: 'center'
   },
@@ -71,7 +71,7 @@ const AmplifyTheme = StyleSheet.create({
     width: '100%'
   },
   button: {
-    backgroundColor: '#30d0fe',
+    backgroundColor: 'rgb(21,59,63)',
     alignItems: 'center',
     padding: 16
   },

@@ -1,14 +1,26 @@
 import React, { Component } from 'react'
 import { StyleSheet,TextInput, TouchableOpacity } from 'react-native'
 
-import { Container, Button, Text, Header } from 'native-base'
+import {
+  Container,
+  Button,
+  Text,
+  Header,
+  Left,
+  Body,
+  Title,
+  Content,
+  Right
+} from 'native-base'
 import { Auth, graphqlOperation, API } from 'aws-amplify'
-
+const RNFS = require('react-native-fs')
+import RNRestart from 'react-native-restart'
 
 import Icon from 'react-native-ionicons'
 import { uploadCheck, createChecksDb } from '../graphql/mutations'
 import { getCheck } from '../graphql/queries'
-
+import { fetchCheck, uploadedCheckImage } from '../actions'
+import {connect} from 'react-redux'
 class BlankScreen extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +32,16 @@ class BlankScreen extends Component {
   authInfo = () => {
     console.log(Auth)
   }
-
+  deleteChecks = () => {
+    RNFS.readdir(RNFS.DocumentDirectoryPath)
+      .then(files =>
+        files.filter(filename => filename !== "RCTAsyncLocalStorage_V1")
+          .map(filename =>
+            RNFS.unlink(`${RNFS.DocumentDirectoryPath}/${filename}`)
+              .then()
+              .catch()))
+      .then(() => this.props.uploadedCheckImage())
+  }
    testAPI = () => {
      API.graphql(graphqlOperation(uploadCheck, {
        date: new Date().toString(),
@@ -43,35 +64,51 @@ class BlankScreen extends Component {
 
   signOut = () => {
     Auth.signOut()
-      .then(data => console.log(data))
+      .then(data => RNRestart.Restart())
       .catch(err => console.log(err))
+  }
+
+  checkTest = () => {
+    this.props.fetchCheck('1B401C2E1B74111B21001B6100200A1B21001B6100200A1B21301B61000A1B21301B6101928E8280908D9B892097858A20FC32370A1B21001B6100200A1B21001B610084A0E2A02FA2E0A5ACEF3A2031342E31302E323031392030343A30370A1B21001B61002D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D0A1B21001B6100312E4170706C65204D6163426F6F6B2050726F20313520323031380A1B21001B610231207820313337203030302C3030203D20313337203030302C30300A1B21001B61002D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D0A1B21301B610288928E838E3A20313337203030302C30300A1B21001B61028F8E8B9397858D8E3A203637363736203736372C30300A1B21001B610291848097803A203637353339203736372C30300A1B21001B6100200A1B21001B61008AA0E1E1A8E03A205F5F5F5F5F5F5F5F5F5F5F5F20202888A2A0ADAEA2208A2E20882E290A1B21001B6100200A1B21001B61002D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D0A1B21001B6100200A1B21001B6100200A1B21001B6100200A1D5631')
   }
 
   render() {
     const { container } = styles
     return (
       <Container style={container}>
-        <Header transparent />
-        <TextInput
-          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-          value={this.state.text}
-        />
-        <Button bordered full onPress={this.testAPI}>
-          <Icon color="green" name="beer" />
-          <Text> Записать чек </Text>
+        <Header style={{  height: 64, backgroundColor: 'rgb(21,59,63)' }}>
+          <Left />
+          <Body>
+            <Title style={{color: 'white'}}>Настройки</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+        {/*<Button style={styles.button} full onPress={this.testAPI}>*/}
+        {/*  <Icon color="white" name="beer" />*/}
+        {/*  <Text style={styles.text}> Записать чек </Text>*/}
+        {/*</Button>*/}
+        {/*<Button  style={styles.button} full onPress={this.fetchChecksList}>*/}
+        {/*  <Icon color="white" name="beer" />*/}
+        {/*  <Text style={styles.text}> Прочитать чеки </Text>*/}
+        {/*</Button>*/}
+        <Button style={styles.button}  full onPress={this.authInfo}>
+          <Icon color="white" name="body" />
+          <Text style={styles.text}> Узнать данные о пользователе </Text>
         </Button>
-        <Button bordered full onPress={this.fetchChecksList}>
-          <Icon color="red" name="beer" />
-          <Text> Прочитать чеки </Text>
+        <Button  style={styles.button} full onPress={this.deleteChecks}>
+          <Icon color="white" name="close-circle-outline" />
+          <Text style={styles.text}> Удалить все чеки </Text>
         </Button>
-        <Button bordered full onPress={this.authInfo}>
-          <Icon color="red" name="beer" />
-          <Text> Узнать данные о пользователе </Text>
+        <Button style={styles.button} full onPress={this.checkTest}>
+          <Icon color="white" name="barcode" />
+          <Text style={styles.text} > Тест получения чека </Text>
         </Button>
-        <Button bordered full onPress={this.signOut}>
-          <Icon color="blue" name="beer" />
-          <Text> Выход за пивом </Text>
-        </Button>
+          <Button style={styles.button} full onPress={this.signOut}>
+            <Icon color="white" name="log-out" />
+            <Text style={styles.text}> Выход из аккаунта </Text>
+          </Button>
+          </Content>
       </Container>
     )
   }
@@ -79,10 +116,19 @@ class BlankScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 10,
-    paddingTop: 30,
+
     backgroundColor: 'rgb(239,243,248)'
+  },
+  button: {
+    backgroundColor: 'rgb(76,171,157)',
+    marginTop: 10
+  },
+  text: {
+    color: 'white'
   }
 })
-
-export default BlankScreen
+const mapDispatchToProps = dispatch => ({
+  fetchCheck: (payload) => dispatch(fetchCheck(payload)),
+  uploadedCheckImage: () => dispatch(uploadedCheckImage())
+})
+export default connect(null, mapDispatchToProps)(BlankScreen)

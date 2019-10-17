@@ -675,6 +675,7 @@ export default class EscPosPrinter {
 
       width = size.width < width ? width : size.width
       height = size.height < height ? height : size.height
+
     }
     return {
       elements,
@@ -686,11 +687,11 @@ export default class EscPosPrinter {
   print(buffer) {
     this._defaultConf()
     const uintArray = new Uint8Array(buffer)
-    const obj = this._prepareElements(uintArray)
-   // this.changeSize(obj.resultWidth, obj.resultHeight)
-     // this.docCanvas.width = obj.resultWidth
-      this.docCanvas.height = obj.resultHeight
     const ctx = this.getContext()
+    const obj = this._prepareElements(uintArray)
+    this.changeSize(ctx, 380, obj.resultHeight)
+      // this.docCanvas.width = 380//obj.resultWidth
+      // this.docCanvas.height = obj.resultHeight
     this.elements = obj.elements
     _.each(obj.elements, (elem, idx) => {
       //var isAdd = true;
@@ -713,20 +714,20 @@ export default class EscPosPrinter {
     })
   }
 
-     changeSize = (width, height) => {
+     changeSize = (ctx,width, height) => {
 
-       const ctx = this.getContext()
        ctx.clearRect(0, 0, this.docCanvas.width, this.docCanvas.height)
          //TODO
-        this.docCanvas.style.width = `${width}px`
-        this.docCanvas.style.height = `${height}px`
+       // this.docCanvas.style.width = `${width}px`
+       // this.docCanvas.style.height = `${height}px`
        this.docCanvas.width = width
        this.docCanvas.height = height
 
-       const { fillStyle } = ctx
-       ctx.fillStyle = '#FFFFFF'
-       ctx.fillRect(0, 0, width, height)
-       ctx.fillStyle = fillStyle
+       const {fillStyle} = ctx
+       ctx.fillStyle = "#FFFFFF";
+       ctx.fillRect(0, 0, width, height);
+       ctx.fillStyle = fillStyle;
+
      }
 
      getContext = () => {

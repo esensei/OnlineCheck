@@ -55,6 +55,8 @@ PODS:
   - Permission-StoreKit (2.0.2):
     - RNPermissions
   - RCTRequired (0.61.1)
+  - RCTRestart (0.0.13):
+    - React
   - RCTTypeSafety (0.61.1):
     - FBLazyVector (= 0.61.1)
     - Folly (= 2018.10.22.00)
@@ -273,6 +275,8 @@ PODS:
     - React
   - RNCAsyncStorage (1.6.2):
     - React
+  - RNFS (2.14.1):
+    - React
   - RNGestureHandler (1.4.1):
     - React
   - RNPermissions (2.0.2):
@@ -309,6 +313,7 @@ DEPENDENCIES:
   - Permission-SpeechRecognition (from `../node_modules/react-native-permissions/ios/SpeechRecognition.podspec`)
   - Permission-StoreKit (from `../node_modules/react-native-permissions/ios/StoreKit.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
+  - RCTRestart (from `../node_modules/react-native-restart/ios`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/`)
@@ -337,6 +342,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNAWSCognito (from `../node_modules/amazon-cognito-identity-js`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
@@ -396,6 +402,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions/ios/StoreKit.podspec"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
+  RCTRestart:
+    :path: "../node_modules/react-native-restart/ios"
   RCTTypeSafety:
     :path: "../node_modules/react-native/Libraries/TypeSafety"
   React:
@@ -446,6 +454,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/amazon-cognito-identity-js"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNPermissions:
@@ -485,6 +495,7 @@ SPEC CHECKSUMS:
   Permission-SpeechRecognition: 2986d10a74ceb9951cb4e1c034151d58fee1fde9
   Permission-StoreKit: e043521fc120a186be765ecf572dbccf83a62b6f
   RCTRequired: 53825815218847d3e9c7b6d92ad2d197a926d51e
+  RCTRestart: e8e3868a71dbec2cf8055fc2c0635db23c8c4479
   RCTTypeSafety: d886540c518e53064dfa081bf7693fd650699b92
   React: 5dea58967c421bd1fdf6b94c18b9ed0f5134683c
   React-Core: b381e65aa0da9b94b9dcdc4a99298075b1c3876c
@@ -510,6 +521,7 @@ SPEC CHECKSUMS:
   ReactCommon: 4fba5be89efdf0b5720e0adb3d8d7edf6e532db0
   RNAWSCognito: b0b908817ce6547cdddaa7842bc166b4c5e7c128
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
+  RNFS: a8fbe7060fa49157d819466404794ad9c58e58cf
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
   RNPermissions: 76d6d5a65496b33378afe4b90ae5b30629ddd900
   RNReanimated: 6abbbae2e5e72609d85aabd92a982a94566885f1
