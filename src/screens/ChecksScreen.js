@@ -1,114 +1,103 @@
-import React, { Component } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
-  StyleSheet,
   Image,
-  ActivityIndicator
+  Dimensions,
+  View
 } from 'react-native'
+import BottomSheet from 'reanimated-bottom-sheet'
+import {
+  Body,
+  Container,
+  Header,
+  Text,
+  Title
+} from 'native-base'
+import { useSelector } from 'react-redux'
+import { format, formatDistanceToNow, differenceInDays, subDays } from 'date-fns'
+import Animated from 'react-native-reanimated'
+import COLORS from '../constants/Colors'
+import styles from '../styles'
+import NowEmptyChecks from '../assets/checks_screen/NowEmptyChecks.svg'
+import { HeaderOfSheet, InnerContentOfSheet, ListItemCheck } from '../components/CheckScreenComponents'
+
 const RNFS = require('react-native-fs')
 
-import { Container, Title, Header, Content, Right, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base'
-import { connect } from 'react-redux'
-import { downloadedCheckImage } from '../actions'
-import AutoHeightImage from 'react-native-auto-height-image';
 
-class ChecksScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      images: []
-    }
+const ChecksScreen = () => {
+  const [fall, setFall] = useState(new Animated.Value(1))
+  const [ID, setID] = useState(-1)
 
-    this.canvas = React.createRef()
-  }
+  const imagesOfCheck = useSelector(state => state.checkImages)
 
-  componentDidUpdate() {
-    if (this.props.isCheckUpload){
+  const checkRef = useRef(null)
+  const { canvas, dateTitle, content, container, header } = styles
 
-      this.setState({images:[]}, this.readfile())
-      this.props.downloadedCheckImage()
-    }
-  }
+  return (
+    <Container style={container}>
+      <Header style={{ backgroundColor: 'white' }}>
+        <Body>
+          <Title style={header}>Мои чеки</Title>
+        </Body>
+      </Header>
 
-  readfile(){
+      <BottomSheet
+        snapPoints={[-10, 300, '80%']}
+        renderContent={() => <InnerContentOfSheet  id={ID} title="Лукойл" />}
+        renderHeader={() => <HeaderOfSheet title="Лукойл" />}
+        ref={checkRef}
+        callbackNode={fall}
+        initialSnap={0}
+        enabledInnerScrolling
+      />
+      <Animated.View style={{ opacity: Animated.add(0.1, Animated.multiply(fall, 0.9)) }}>
+        {imagesOfCheck.length === 0 ?
+          <Animated.View style={{marginTop: 100, alignItems: "center", justifyContent: 'center'}}>
+            <NowEmptyChecks style={{ flex: 1 }} />
+          </Animated.View>
+          :
+          <>
+            {imagesOfCheck.length > 0 && imagesOfCheck.map((res, index) => (
+              differenceInDays(res.date, new Date()) === 0 ?
+                <View>
+                  <Text style={dateTitle}>Сегодня</Text>
+                  <ListItemCheck company="Лукойл" path={res.path} id={res.id} setID={setID} checkRef={checkRef} cost="599.4" date={res.date.toString()} />
+                </View>
+                : null
+            ))}
 
-    RNFS.readdir(RNFS.DocumentDirectoryPath)
-      .then(files =>
-        files.sort((a,b) => (b - a))
-          .filter(filename => filename !== "RCTAsyncLocalStorage_V1")
-          .map(filename =>
-            RNFS.readFile(`${RNFS.DocumentDirectoryPath}/${filename}`, 'base64')
-              .then(
-                res => this.setState(prevState => ({images: [...prevState.images, res]}))
-              )
-          )
-      )
-  }
 
-  componentDidMount() {
-   this.readfile()
-  }
+            {/*{imagesOfCheck.map((res, index) => {*/}
+            {/*  console.log(`file://${RNFS.DocumentDirectoryPath}/${res.path}`)*/}
+            {/*  return (*/}
+            {/*    <Card key={index}>*/}
+            {/*      <CardItem style={{ backgroundColor: COLORS.green }}>*/}
+            {/*        <Left>*/}
+            {/*          <Thumbnail source={require('../img/logoOnCheck.png')} />*/}
+            {/*          <Body>*/}
+            {/*            <Text style={{ color: 'white' }}>Лукойл</Text>*/}
+            {/*            <Text style={{ color: 'rgb(209,243,248)' }} note>Товарный чек</Text>*/}
+            {/*          </Body>*/}
+            {/*        </Left>*/}
+            {/*      </CardItem>*/}
+            {/*      <CardItem style={canvas}>*/}
 
-  render() {
-    const { canvas } = styles
-    if (this.props.loadingImage.uploaded || this.props.loadingImage.fetched || this.props.loadingImage.startListenBLE) {
-      return (
-        <Container style={{ flex: 1,
-          justifyContent: 'center'}}>
-          <ActivityIndicator size="large" color="rgb(21,59,63)" />
-        </Container>
-      )
-    }
-    return (
-      <Container style={{ backgroundColor: 'rgb(239,243,248)' }}>
-        <Header style={{  height: 64, backgroundColor: 'rgb(21,59,63)' }}>
-          <Left />
-          <Body>
-            <Title style={{color: 'white'}}>Ваши чеки</Title>
-          </Body>
-          <Right />
-        </Header>
+            {/*        <Image*/}
+            {/*          style={{*/}
+            {/*            resizeMode: 'contain',*/}
+            {/*            width: '100%',*/}
+            {/*            height: 900*/}
+            {/*          }}*/}
+            {/*          source={{ uri: `${res.path}` }}*/}
+            {/*        />*/}
+            {/*      </CardItem>*/}
+            {/*    </Card>)*/}
+            {/*})}*/}
+          </>}
 
-        <Content style={{ paddingHorizontal: 5 }}>
-          {this.state.images.map( (res, index) => {
 
-            return (
-              <Card key={index}>
-                <CardItem style={{ backgroundColor: 'rgb(76,171,157)' }}>
-                  <Left>
-                    <Thumbnail source={require('../img/logoOnCheck.png')} />
-                    <Body>
-                      <Text style={{ color: 'white' }}>Лукойл</Text>
-                      <Text style={{ color: 'rgb(209,243,248)' }} note>Товарный чек</Text>
-                    </Body>
-                  </Left>
-                </CardItem>
-                <CardItem style={canvas} >
-                  <Image style={{resizeMode: 'contain', width: '100%', height: 300}}  source={{uri: "data:image/png;base64,"+res}}/>
-                </CardItem>
-              </Card>
-            )
-            }
-
-          )}
-        </Content>
-      </Container>
-    )
-  }
+      </Animated.View>
+    </Container>
+  )
 }
-const styles = StyleSheet.create({
-  canvas: {
-    flex: 1,
-    justifyContent: 'center'
-  }
-})
 
-const mapStateToProps = state => ({
-  isCheckUpload: state.check.uploaded,
-  loadingImage: state.check
-})
-
-const mapDispatchToProps = dispatch => ({
-  downloadedCheckImage: () => dispatch(downloadedCheckImage())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChecksScreen)
+export default ChecksScreen

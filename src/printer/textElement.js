@@ -6,8 +6,6 @@ export default class TextElement {
   }
 
   draw(ctx) {
-
-
     const conf = this._conf
     this._setFont()
     ctx.fillText(this._text, conf.left, conf.top)
@@ -30,11 +28,11 @@ export default class TextElement {
     this._ctx.font = this._font
   }
 
-   getTextAlign() {
+  getTextAlign() {
     return this._conf.textAlign
   }
 
-   getLeft() {
+  getLeft() {
     return this._conf.left
   }
 
@@ -47,15 +45,20 @@ export default class TextElement {
     return this._ctx.measureText(this._text).width
   }
 
-  get widthWithLeft() {
-    return this.width + this._conf.left
-  }
+   getWidth = async () => {
+     this._setFont()
+     return (await this._ctx.measureText(this._text)).width
+   }
 
-  get height() {
-    return this._conf.fontSize
-  }
+   get widthWithLeft() {
+     return this.width + this._conf.left
+   }
 
-  get heightWithTop() {
-    return this._conf.top + this._conf.lineHeight
-  }
+   get height() {
+     return this._conf.fontSize
+   }
+
+   get heightWithTop() {
+     return this._conf.top + this._conf.lineHeight
+   }
 }

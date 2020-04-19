@@ -13,11 +13,11 @@ export default class Position {
     this.__height = 0
   }
 
-  set setLeft(l) {
+   setLeft = (l) => {
     this.__left = l
   }
 
-  set setTop(t) {
+   setTop = (t) => {
     this.__top = t
   }
 

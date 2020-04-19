@@ -5,6 +5,7 @@ const initialState = {
 }
 
 const checkReducer = (state = initialState, action) => {
+
   if (action.type === 'RUN_FIND_BLE') {
     return {
       uploaded: false,

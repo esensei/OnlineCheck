@@ -1,134 +1,87 @@
-import React, { Component } from 'react'
-import { StyleSheet,TextInput, TouchableOpacity } from 'react-native'
-
+import React from 'react'
+import { TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux'
 import {
+  Body,
   Container,
-  Button,
-  Text,
+  Content,
   Header,
   Left,
-  Body,
+  Right,
+  Text,
   Title,
-  Content,
-  Right
+  View
 } from 'native-base'
-import { Auth, graphqlOperation, API } from 'aws-amplify'
-const RNFS = require('react-native-fs')
 import RNRestart from 'react-native-restart'
-
 import Icon from 'react-native-ionicons'
-import { uploadCheck, createChecksDb } from '../graphql/mutations'
-import { getCheck } from '../graphql/queries'
-import { fetchCheck, uploadedCheckImage } from '../actions'
-import {connect} from 'react-redux'
-class BlankScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      text: null
-    }
+import styles from '../styles'
+import ProfileDefault from '../assets/settings_screen/profile_default.svg'
+import test_check from '../configs/test_check'
+import {
+  fetchCheck,
+  removeAllCheck
+} from '../actions'
+
+const RNFS = require('react-native-fs')
+
+
+const BlankScreen = () => {
+  const dispatch = useDispatch()
+  const deleteChecks = () => {
+    dispatch(removeAllCheck())
+    // RNFS.readdir(RNFS.DocumentDirectoryPath)
+    //   .then(files =>
+    //     files.filter(filename => filename !== 'RCTAsyncLocalStorage_V1')
+    //       .map(filename =>
+    //         RNFS.unlink(`${RNFS.DocumentDirectoryPath}/${filename}`)
+    //           .then()
+    //           .catch()))
+    //   .then(() => dispatch(uploadedCheckImage()))
   }
 
-  authInfo = () => {
-    console.log(Auth)
-  }
-  deleteChecks = () => {
-    RNFS.readdir(RNFS.DocumentDirectoryPath)
-      .then(files =>
-        files.filter(filename => filename !== "RCTAsyncLocalStorage_V1")
-          .map(filename =>
-            RNFS.unlink(`${RNFS.DocumentDirectoryPath}/${filename}`)
-              .then()
-              .catch()))
-      .then(() => this.props.uploadedCheckImage())
-  }
-   testAPI = () => {
-     API.graphql(graphqlOperation(uploadCheck, {
-       date: new Date().toString(),
-       img: "[0x1B, 0x40, 0x1C, 0x2E, 0x1B, 0x74, 0x11, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1B, 0x21, 0x30, 0x1B, 0x61, 0x00, 0x0A, 0x1B, 0x21, 0x30, 0x1B, 0x61, 0x01, 0x92, 0x8E, 0x82, 0x80, 0x90, 0x8D, 0x9B, 0x89, 0x20, 0x97, 0x85, 0x8A, 0x20, 0xFC, 0x31, 0x32, 0x32, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x84, 0xA0, 0xE2, 0xA0, 0x2F, 0xA2, 0xE0, 0xA5, 0xAC, 0xEF, 0x3A, 0x20, 0x31, 0x36, 0x2E, 0x30, 0x39, 0x2E, 0x32, 0x30, 0x31, 0x39, 0x20, 0x30, 0x32, 0x3A, 0x34, 0x31, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x31, 0x2E, 0xAA, 0xA5, 0xA3, 0xA0, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x02, 0x31, 0x20, 0x78, 0x20, 0x20, 0x31, 0x30, 0x30, 0x2C, 0x30, 0x30, 0x20, 0x3D, 0x20, 0x20, 0x31, 0x30, 0x30, 0x2C, 0x30, 0x30, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x0A, 0x1B, 0x21, 0x30, 0x1B, 0x61, 0x02, 0x88, 0x92, 0x8E, 0x83, 0x8E, 0x3A, 0x20, 0x20, 0x31, 0x30, 0x30, 0x2C, 0x30, 0x30, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x02, 0x8F, 0x8E, 0x8B, 0x93, 0x97, 0x85, 0x8D, 0x8E, 0x3A, 0x20, 0x20, 0x32, 0x32, 0x32, 0x2C, 0x30, 0x30, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x02, 0x91, 0x84, 0x80, 0x97, 0x80, 0x3A, 0x20, 0x20, 0x31, 0x32, 0x32, 0x2C, 0x30, 0x30, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x8A, 0xA0, 0xE1, 0xE1, 0xA8, 0xE0, 0x3A, 0x20, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x5F, 0x20, 0x20, 0x28, 0x84, 0xA8, 0xE0, 0xA8, 0xA6, 0x29, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x2D, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1B, 0x21, 0x00, 0x1B, 0x61, 0x00, 0x20, 0x0A, 0x1D, 0x56, 0x31]"
-     }))
-       .then(res => console.log('item created!', res))
-       .catch((err) => {
-        this.setState({text:  err.errors[0].message})
-       })
-   }
 
-  fetchChecksList = () => {
-    API.graphql(graphqlOperation(getCheck, { id: 1 }))
-      .then((res) => console.log('list fetched! ', res))
-
-      .catch((err) => {
-        console.log('error create DB...', err)
-      })
-  }
-
-  signOut = () => {
+  const signOut = () => {
     Auth.signOut()
-      .then(data => RNRestart.Restart())
+      .then(() => RNRestart.Restart())
       .catch(err => console.log(err))
   }
 
-  checkTest = () => {
-    this.props.fetchCheck('1B401C2E1B74111B21001B6100200A1B21001B6100200A1B21301B61000A1B21301B6101928E8280908D9B892097858A20FC32370A1B21001B6100200A1B21001B610084A0E2A02FA2E0A5ACEF3A2031342E31302E323031392030343A30370A1B21001B61002D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D0A1B21001B6100312E4170706C65204D6163426F6F6B2050726F20313520323031380A1B21001B610231207820313337203030302C3030203D20313337203030302C30300A1B21001B61002D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D0A1B21301B610288928E838E3A20313337203030302C30300A1B21001B61028F8E8B9397858D8E3A203637363736203736372C30300A1B21001B610291848097803A203637353339203736372C30300A1B21001B6100200A1B21001B61008AA0E1E1A8E03A205F5F5F5F5F5F5F5F5F5F5F5F20202888A2A0ADAEA2208A2E20882E290A1B21001B6100200A1B21001B61002D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D2D0A1B21001B6100200A1B21001B6100200A1B21001B6100200A1D5631')
+  const checkTest = () => {
+    dispatch(fetchCheck(test_check))
   }
 
-  render() {
-    const { container } = styles
-    return (
-      <Container style={container}>
-        <Header style={{  height: 64, backgroundColor: 'rgb(21,59,63)' }}>
-          <Left />
-          <Body>
-            <Title style={{color: 'white'}}>Настройки</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
-        {/*<Button style={styles.button} full onPress={this.testAPI}>*/}
-        {/*  <Icon color="white" name="beer" />*/}
-        {/*  <Text style={styles.text}> Записать чек </Text>*/}
-        {/*</Button>*/}
-        {/*<Button  style={styles.button} full onPress={this.fetchChecksList}>*/}
-        {/*  <Icon color="white" name="beer" />*/}
-        {/*  <Text style={styles.text}> Прочитать чеки </Text>*/}
-        {/*</Button>*/}
-        <Button style={styles.button}  full onPress={this.authInfo}>
-          <Icon color="white" name="body" />
-          <Text style={styles.text}> Узнать данные о пользователе </Text>
-        </Button>
-        <Button  style={styles.button} full onPress={this.deleteChecks}>
-          <Icon color="white" name="close-circle-outline" />
-          <Text style={styles.text}> Удалить все чеки </Text>
-        </Button>
-        <Button style={styles.button} full onPress={this.checkTest}>
-          <Icon color="white" name="barcode" />
-          <Text style={styles.text} > Тест получения чека </Text>
-        </Button>
-          <Button style={styles.button} full onPress={this.signOut}>
-            <Icon color="white" name="log-out" />
-            <Text style={styles.text}> Выход из аккаунта </Text>
-          </Button>
-          </Content>
-      </Container>
-    )
-  }
+  const { container, settingsButton, buttonText, buttonTextContainer } = styles
+  return (
+    <Container style={container}>
+      <Header style={{ backgroundColor: 'white' }}>
+        <Left />
+        <Body>
+          <Title>Настройки</Title>
+        </Body>
+        <Right>
+          <Icon onPress={signOut} name="log-out" color="#73AC05" />
+        </Right>
+      </Header>
+      <View style={{ paddingHorizontal: 32, paddingVertical: 24 }}>
+        <View style={{ alignItems: 'center' }}>
+          <ProfileDefault />
+        </View>
+        <TouchableOpacity onPress={checkTest} style={settingsButton}>
+          <View style={buttonTextContainer}>
+            <Text style={buttonText}>Тест получения чека</Text>
+          </View>
+          <Icon name="swap" color="#73AC05" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={deleteChecks} style={settingsButton}>
+          <View style={buttonTextContainer}>
+            <Text style={buttonText}>Удалить все чеки</Text>
+          </View>
+          <Icon name="trash" color="#73AC05" />
+        </TouchableOpacity>
+      </View>
+    </Container>
+  )
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
 
-    backgroundColor: 'rgb(239,243,248)'
-  },
-  button: {
-    backgroundColor: 'rgb(76,171,157)',
-    marginTop: 10
-  },
-  text: {
-    color: 'white'
-  }
-})
-const mapDispatchToProps = dispatch => ({
-  fetchCheck: (payload) => dispatch(fetchCheck(payload)),
-  uploadedCheckImage: () => dispatch(uploadedCheckImage())
-})
-export default connect(null, mapDispatchToProps)(BlankScreen)
+
+export default BlankScreen

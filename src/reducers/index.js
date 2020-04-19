@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux'
 import checkReducer from './checkReducer'
-import imagesReducer from './imagesReducer'
-
+import checkImagesReducer from './checkImagesReducer'
 export default rootReducer = combineReducers({
   check: checkReducer,
-  images: imagesReducer
-
+  checkImages: checkImagesReducer
 })
