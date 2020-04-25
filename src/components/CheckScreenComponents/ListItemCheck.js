@@ -10,13 +10,13 @@ import {
 import React from 'react'
 import { format, formatDistanceToNow, differenceInDays, subDays } from 'date-fns'
 
-const ListItemCheck = ({ company, cost, date, checkRef, id, setID }) => {
+const ListItemCheck = ({ clFunc, company, cost, date, checkRef, id, setID }) => {
   console.log(date)
   return (
   <>
     <ListItem>
       <TouchableOpacity onPress={() => {
-
+        clFunc(company)
         setID(id)
         checkRef.current.snapTo(1)
       }}
@@ -27,7 +27,7 @@ const ListItemCheck = ({ company, cost, date, checkRef, id, setID }) => {
         <View style={{ flex: 4 }}>
           <Text style={{ color: 'black', fontWeight: '600', alignSelf: 'flex-start', fontSize: 17, lineHeight: 22 }}>{company}</Text>
           <Text style={{ color: 'grey', alignSelf: 'flex-start', fontSize: 12, lineHeight: 16 }}>
-            Товарный чек  {format(new Date(date), 'MM.dd.yyyy')}
+            Товарный чек {id} от {format(new Date(date), 'MM.dd.yyyy')}
           </Text>
         </View>
         <Text style={{ fontWeight: '600', fontSize: 17, lineHeight: 22 }}>

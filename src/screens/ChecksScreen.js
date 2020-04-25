@@ -19,13 +19,13 @@ import COLORS from '../constants/Colors'
 import styles from '../styles'
 import NowEmptyChecks from '../assets/checks_screen/NowEmptyChecks.svg'
 import { HeaderOfSheet, InnerContentOfSheet, ListItemCheck } from '../components/CheckScreenComponents'
-
 const RNFS = require('react-native-fs')
 
 
 const ChecksScreen = () => {
   const [fall, setFall] = useState(new Animated.Value(1))
   const [ID, setID] = useState(-1)
+  const [nameOfCompany, setNameOfCompany] = useState("")
 
   const imagesOfCheck = useSelector(state => state.checkImages)
 
@@ -42,8 +42,8 @@ const ChecksScreen = () => {
 
       <BottomSheet
         snapPoints={[-10, 300, '80%']}
-        renderContent={() => <InnerContentOfSheet  id={ID} title="Лукойл" />}
-        renderHeader={() => <HeaderOfSheet title="Лукойл" />}
+        renderContent={() => <InnerContentOfSheet  id={ID} title={nameOfCompany} />}
+        renderHeader={() => <HeaderOfSheet  />}
         ref={checkRef}
         callbackNode={fall}
         initialSnap={0}
@@ -56,12 +56,14 @@ const ChecksScreen = () => {
           </Animated.View>
           :
           <>
+          <View>
+            <Text style={dateTitle}>Сегодня</Text>
+          </View>
             {imagesOfCheck.length > 0 && imagesOfCheck.map((res, index) => (
               differenceInDays(res.date, new Date()) === 0 ?
-                <View>
-                  <Text style={dateTitle}>Сегодня</Text>
-                  <ListItemCheck company="Лукойл" path={res.path} id={res.id} setID={setID} checkRef={checkRef} cost="599.4" date={res.date.toString()} />
-                </View>
+
+                  <ListItemCheck clFunc={setNameOfCompany} company={res.title} path={res.path} id={res.id} setID={setID} checkRef={checkRef} cost="599.4" date={res.date.toString()} />
+
                 : null
             ))}
 

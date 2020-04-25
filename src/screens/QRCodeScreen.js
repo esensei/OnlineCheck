@@ -6,7 +6,10 @@ import {
 import { BleManager } from 'react-native-ble-plx'
 import QRCodeScanner from 'react-native-qrcode-scanner'
 import {
+  Content,
   Body,
+  Text,
+  Button,
   Container,
   Header,
   Title
@@ -20,15 +23,28 @@ import { decode as atob } from 'base-64'
 import styles from '../styles'
 import {
   fetchCheck,
-  startListenBLE
 } from '../actions'
 
 class QRCodeScreen extends Component {
   constructor() {
     super()
     this.manager = new BleManager()
-  }
 
+  }
+  scanAndConnect2 = () => {
+    this.manager.startDeviceScan(null, null, (error, device) => {
+      if (error) {
+        alert(error)
+        return
+      }
+    if (device.name === 'E-CHECK') {
+      this.scanAndConnect(device.id)
+    }
+      // Check if it is a device you are looking for based on advertisement data
+      // or other criteria.
+      console.log(device)
+    });
+  }
   base64toHEX = base64 => {
     const raw = atob(base64)
     let HEX = ''
@@ -43,12 +59,6 @@ class QRCodeScreen extends Component {
 
   scanAndConnect = (id) => {
     console.log(id)
-    this.props.startListenBLE()
-    // this.manager.startDeviceScan(null, null, (error, device) => {
-
-
-    // if (id.indexOf(device.id) > -1) {
-    // id = "88609F29-D421-D20B-835B-CB837E21D652"
     let data = ''
     this.props.navigation.navigate('Ваши чеки')
     this.manager
@@ -79,7 +89,7 @@ class QRCodeScreen extends Component {
                   } else {
                     const hexData = this.base64toHEX(characteristic.value)
                     data += hexData
-
+                    console.log(data)
                     if (data.indexOf('0F0F0F') > -1) {
 
                       data = data.substr(0, data.length - 6)
@@ -114,11 +124,12 @@ class QRCodeScreen extends Component {
           .catch(() => alert('Ошибка'))
       }
       const conf = ByteParser.byteToString(tag.ndefMessage[0].payload)
-      this.scanAndConnect(conf.substr(1, conf.length - 1))
+      this.scanAndConnect2(conf.substr(1, conf.length - 1))
       NfcManager.setAlertMessageIOS('I got your tag!')
       NfcManager.unregisterTagEvent()
         .catch(() => 0)
     })
+
   }
 
   componentWillUnmount() {
@@ -126,7 +137,10 @@ class QRCodeScreen extends Component {
     NfcManager.unregisterTagEvent()
       .catch(() => 0)
   }
+_test1 = () => {
+  this.manager.startDeviceScan(null,null, (err, dev) => console.log(err, dev))
 
+}
   _test = () => {
     NfcManager.registerTagEvent()
       .then()
@@ -156,17 +170,17 @@ class QRCodeScreen extends Component {
 
             reactivate
             reactivateTimeout={5000}
-            onRead={(e) => this.scanAndConnect(e.data)}
+            onRead={(e) => this.scanAndConnect2(e.data)}
             showMarker
             topContent={<View style={{ height: 0 }}></View>}
             bottomContent={<View style={{ height: 0 }}></View>}
           />
         </View>
-        {/*<Content style={{ flex: 0.3, paddingHorizontal: 15, paddingTop: 20 }}>*/}
-        {/*  <Button onPress={this._test} block style={{ backgroundColor: 'rgb(21,59,63)' }}>*/}
-        {/*    <Text>NFC</Text>*/}
-        {/*  </Button>*/}
-        {/*</Content>*/}
+        <Content style={{ flex: 0.3, marginTop: 56, paddingHorizontal: 15, paddingTop: 20 }}>
+          <Button onPress={this._test} block style={{ backgroundColor: 'rgb(21,59,63)' }}>
+            <Text>NFC</Text>
+          </Button>
+        </Content>
       </Container>
     )
   }
@@ -174,7 +188,6 @@ class QRCodeScreen extends Component {
 
 const mapDispatchToProps = dispatch => ({
   fetchCheck: (payload) => dispatch(fetchCheck(payload)),
-  startListenBLE: () => dispatch(startListenBLE())
 })
 
 const mapStateToProps = state => ({
